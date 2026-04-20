@@ -603,6 +603,65 @@ footer strong{color:var(--gold);}
 .exegese-tab2{padding:8px 18px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;}
 .exegese-tab2.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
 .exegese-panel2{display:none;}.exegese-panel2.active{display:block;}
+
+/* ── ORAÇÕES E COSTUMES ── */
+.oracao-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.oracao-tab{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;letter-spacing:0.5px;}
+.oracao-tab.active{background:rgba(200,164,74,0.12);border-color:var(--gold);color:var(--gold);}
+.oracao-panel{display:none;}.oracao-panel.active{display:block;}
+
+.oracao-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:20px;}
+.oracao-header{padding:24px 28px 18px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(200,164,74,0.06),transparent);}
+.oracao-categoria{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.oracao-nome-heb{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold-light);direction:rtl;line-height:1.2;margin-bottom:4px;}
+.oracao-nome-pt{font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.oracao-quando{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.oracao-quando::before{content:'🕐';font-size:14px;}
+
+.oracao-body{padding:28px;}
+.oracao-texto-wrap{background:var(--card2);border-radius:14px;padding:24px;margin-bottom:20px;text-align:center;}
+.oracao-heb{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,26px);color:var(--text);direction:rtl;line-height:2.2;letter-spacing:1px;margin-bottom:16px;}
+.oracao-heb .palavra{display:inline-block;cursor:pointer;padding:2px 4px;border-radius:4px;transition:background 0.15s;}
+.oracao-heb .palavra:hover{background:rgba(200,164,74,0.15);}
+.oracao-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:12px auto;}
+.oracao-translit{font-size:15px;color:var(--blue);font-style:italic;line-height:2;margin-bottom:12px;}
+.oracao-traducao{font-size:15px;color:var(--muted);line-height:1.9;font-style:italic;}
+
+.oracao-analise{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.palavra-row{background:var(--card2);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:90px 1fr 1fr;gap:16px;align-items:center;transition:border 0.2s;border:1px solid transparent;}
+.palavra-row:hover{border-color:rgba(200,164,74,0.25);}
+@media(max-width:600px){.palavra-row{grid-template-columns:1fr 1fr;}}
+.pw-heb{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);direction:rtl;}
+.pw-translit{font-size:13px;color:var(--blue);font-style:italic;}
+.pw-meaning{font-size:13px;color:var(--muted);}
+.pw-grammar{font-size:11px;color:var(--teal);margin-top:2px;}
+
+.oracao-contexto{background:rgba(200,164,74,0.05);border:1px solid rgba(200,164,74,0.2);border-radius:14px;padding:20px 22px;}
+.oracao-ctx-title{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.oracao-ctx-text{font-size:14px;color:var(--muted);line-height:1.9;}
+.oracao-ctx-text strong{color:var(--text);}
+
+/* Festa cards */
+.festa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.festa-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.2s;}
+.festa-card:hover{border-color:rgba(200,164,74,0.4);transform:translateY(-2px);}
+.festa-top{padding:22px 22px 16px;background:linear-gradient(135deg,rgba(200,164,74,0.08),transparent);}
+.festa-heb{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);direction:rtl;line-height:1;}
+.festa-translit{font-size:13px;color:var(--blue);font-style:italic;margin-top:4px;}
+.festa-nome{font-size:15px;font-weight:600;color:var(--text);margin-top:4px;}
+.festa-data{font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.festa-body{padding:16px 22px 22px;border-top:1px solid var(--border);}
+.festa-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.festa-bencao{background:var(--card2);border-radius:10px;padding:12px 14px;}
+.festa-bencao-heb{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold-light);direction:rtl;margin-bottom:4px;}
+.festa-bencao-tr{font-size:11px;color:var(--blue);font-style:italic;}
+.festa-bencao-pt{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* Tooltip palavra */
+.tooltip-palavra{position:fixed;background:var(--card2);border:1px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text);z-index:1000;pointer-events:none;display:none;max-width:220px;box-shadow:0 8px 24px rgba(0,0,0,0.4);}
+.tooltip-heb{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);direction:rtl;}
+.tooltip-tr{color:var(--blue);font-style:italic;font-size:12px;}
+.tooltip-pt{color:var(--muted);font-size:12px;margin-top:2px;}
 </style>
 </head>
 <body>
@@ -702,6 +761,9 @@ function checkPassword(){
     <li><a onclick="irPara('leitura')">Leitura</a></li>
     <li><a onclick="irPara('mapa')">Mapa</a></li>
     <li><a onclick="irPara('conquistas')">Conquistas</a></li>
+    <li><a onclick="irPara('oracoes')">Orações</a></li>
+    <li><a onclick="irPara('festas')">Festas Judaicas</a></li>
+    <li><a onclick="irPara('bencaos')">Bênçãos</a></li>
   </ul>
 </nav>
 
@@ -1677,8 +1739,50 @@ function checkPassword(){
   <div class="conquistas-grid reveal" id="conquistasGrid"></div>
 </section>
 
+<div class="divider"></div>
+
+<!-- ══ MÓDULO 30 — ORAÇÕES JUDAICAS ══ -->
+<section id="oracoes">
+  <div class="sec-label">Módulo 30</div>
+  <div class="nivel-bar" style="display:flex;align-items:center;gap:8px;margin-top:6px;margin-bottom:2px;"><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#e07070;font-weight:600;">Nível atual</span><span style="display:flex;gap:3px;"><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#3a3a45;font-size:13px;">●</span></span><span style="font-size:10px;color:#e07070;font-style:italic;">Avançado</span></div>
+  <h2 class="sec-title reveal">Orações Judaicas — Liturgia Hebraica</h2>
+  <p class="sec-desc reveal">As orações mais importantes do judaísmo em hebraico com nikud, transliteração completa com acentos e tradução palavra por palavra. Clique em qualquer palavra para ver sua análise.</p>
+
+  <div class="oracao-tabs reveal" id="oracaoTabs"></div>
+  <div id="oracaoPanels"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MÓDULO 31 — FESTAS JUDAICAS ══ -->
+<section id="festas">
+  <div class="sec-label">Módulo 31</div>
+  <div class="nivel-bar" style="display:flex;align-items:center;gap:8px;margin-top:6px;margin-bottom:2px;"><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#e07070;font-weight:600;">Nível atual</span><span style="display:flex;gap:3px;"><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#e07070;font-size:13px;">●</span><span style="color:#3a3a45;font-size:13px;">●</span></span><span style="font-size:10px;color:#e07070;font-style:italic;">Avançado</span></div>
+  <h2 class="sec-title reveal">Festas e Calendário Judaico</h2>
+  <p class="sec-desc reveal">As principais festas do calendário hebraico com nome original, transliteração, significado e a bênção específica de cada uma.</p>
+  <div class="festa-grid reveal" id="festaGrid"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MÓDULO 32 — BÊNÇÃOS ══ -->
+<section id="bencaos">
+  <div class="sec-label">Módulo 32</div>
+  <div class="nivel-bar" style="display:flex;align-items:center;gap:8px;margin-top:6px;margin-bottom:2px;"><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#c8a44a;font-weight:600;">Nível atual</span><span style="display:flex;gap:3px;"><span style="color:#c8a44a;font-size:13px;">●</span><span style="color:#c8a44a;font-size:13px;">●</span><span style="color:#c8a44a;font-size:13px;">●</span><span style="color:#3a3a45;font-size:13px;">●</span><span style="color:#3a3a45;font-size:13px;">●</span></span><span style="font-size:10px;color:#c8a44a;font-style:italic;">Intermediário</span></div>
+  <h2 class="sec-title reveal">Bênçãos do Cotidiano — בְּרָכוֹת</h2>
+  <p class="sec-desc reveal">As bênçãos (brachot) são fórmulas litúrgicas usadas no judaísmo para santificar os momentos do dia. Todas seguem a fórmula clássica: <span style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;">בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם</span></p>
+  <div id="bencaoList"></div>
+</section>
+
+<!-- TOOLTIP -->
+<div class="tooltip-palavra" id="tooltipPalavra">
+  <div class="tooltip-heb" id="ttHeb"></div>
+  <div class="tooltip-tr" id="ttTr"></div>
+  <div class="tooltip-pt" id="ttPt"></div>
+</div>
+
 <footer>
-  Aula elaborada por <strong>Prof. Gabriel Barbosa</strong> · עברית בִּיבְלִית · Hebraico Bíblico para iniciantes · 29 Módulos
+  Aula elaborada por <strong>Prof. Gabriel Barbosa</strong> · עברית בִּיבְלִית · Hebraico Bíblico para iniciantes · 32 Módulos
 </footer>
 
 <script>
@@ -2240,6 +2344,269 @@ renderXP();
 
 /* ══ CERTIFICADO ══ */
 setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));},600);
+
+/* ══ ORAÇÕES DATA ══ */
+const oracoesData = [
+  {
+    id:'shema', nome:'שְׁמַע יִשְׂרָאֵל', translit:'Shemá Yisraél', pt:'Ouve, ó Israel',
+    categoria:'Oração Central', quando:'Manhã e noite — recitada diariamente',
+    versos:[
+      {heb:'שְׁמַע יִשְׂרָאֵל', tr:'Shemá Yis·ra·él', pt:'Ouve, ó Israel'},
+      {heb:'יְהוָה אֱלֹהֵינוּ', tr:'A·do·nái E·lo·héi·nu', pt:'O SENHOR é nosso Deus'},
+      {heb:'יְהוָה אֶחָד׃', tr:'A·do·nái E·chád', pt:'O SENHOR é único'},
+    ],
+    palavras:[
+      {heb:'שְׁמַע',tr:'she·má',pt:'ouve / escuta',gram:'Qal Imperativo 2ª masc. sing.'},
+      {heb:'יִשְׂרָאֵל',tr:'yis·ra·él',pt:'Israel',gram:'Nome próprio — "luta com Deus"'},
+      {heb:'יְהוָה',tr:'A·do·nái',pt:'O SENHOR',gram:'Nome divino — tetragrama YHWH'},
+      {heb:'אֱלֹהֵינוּ',tr:'e·lo·héi·nu',pt:'nosso Deus',gram:'Elohim + sufixo "nosso"'},
+      {heb:'אֶחָד',tr:'e·chád',pt:'único / um',gram:'Adjetivo numeral masc. sing.'},
+    ],
+    contexto:'O Shema é a confissão de fé central do judaísmo, recitada duas vezes ao dia. Jesus a citou como o maior mandamento (Mc 12:29). A palavra <strong>שְׁמַע</strong> não significa apenas "ouvir" mas <strong>obedecer</strong> — uma escuta ativa que leva à ação.'
+  },
+  {
+    id:'shacharit', nome:'שַׁחֲרִית', translit:'Sha·cha·rít', pt:'Oração da Manhã',
+    categoria:'Liturgia Diária', quando:'Todo dia ao amanhecer, antes das atividades',
+    versos:[
+      {heb:'מוֹדֶה אֲנִי לְפָנֶיךָ', tr:'Mo·dé a·ní le·fa·né·chá', pt:'Sou grato diante de Ti'},
+      {heb:'מֶלֶךְ חַי וְקַיָּם', tr:'Mé·lech chai ve·ka·yám', pt:'Rei vivo e eterno'},
+      {heb:'שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי', tr:'she·he·che·zár·ta bi nish·ma·tí', pt:'que devolveste em mim minha alma'},
+      {heb:'בְּחֶמְלָה רַבָּה אֱמוּנָתֶךָ׃', tr:'be·chem·lá ra·bá e·mu·na·te·chá', pt:'grande é Tua fidelidade'},
+    ],
+    palavras:[
+      {heb:'מוֹדֶה',tr:'mo·dé',pt:'grato / confessando',gram:'Hifil Particípio — ação contínua'},
+      {heb:'אֲנִי',tr:'a·ní',pt:'eu',gram:'Pronome pessoal 1ª sing.'},
+      {heb:'חַי',tr:'chai',pt:'vivo',gram:'Adj. masc. sing. — raiz ח-י-ה (vida)'},
+      {heb:'נִשְׁמָתִי',tr:'nish·ma·tí',pt:'minha alma',gram:'נְשָׁמָה + sufixo 1ª sing.'},
+      {heb:'אֱמוּנָתֶךָ',tr:'e·mu·na·te·chá',pt:'Tua fidelidade',gram:'אֱמוּנָה + sufixo 2ª masc.'},
+    ],
+    contexto:'O <strong>Modé Ani</strong> é a primeira oração recitada ao acordar, ainda na cama. Agradece a Deus por devolver a alma ao corpo após o sono. A raiz <strong>מ-ו-ד</strong> significa confessar, agradecer e louvar — a mesma de <strong>תּוֹדָה</strong> (todá = obrigado).'
+  },
+  {
+    id:'arvit', nome:'עַרְבִית', translit:'Ar·vít', pt:'Oração da Noite',
+    categoria:'Liturgia Diária', quando:'Após o pôr do sol, encerrando o dia',
+    versos:[
+      {heb:'בָּרוּךְ אַתָּה יְהוָה', tr:'Ba·rúch a·tá A·do·nái', pt:'Bendito és Tu, SENHOR'},
+      {heb:'אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם', tr:'E·lo·héi·nu mé·lech ha·o·lám', pt:'nosso Deus, Rei do universo'},
+      {heb:'אֲשֶׁר בִּדְבָרוֹ מַעֲרִיב עֲרָבִים', tr:'a·shér bid·va·ró ma·a·rív a·ra·vím', pt:'que com Sua palavra faz escurecer as tardas'},
+    ],
+    palavras:[
+      {heb:'בָּרוּךְ',tr:'ba·rúch',pt:'bendito / abençoado',gram:'Qal Particípio passivo — raiz ב-ר-כ'},
+      {heb:'הָעוֹלָם',tr:'ha·o·lám',pt:'o universo / o mundo',gram:'Artigo + subst. masc. sing.'},
+      {heb:'מַעֲרִיב',tr:'ma·a·rív',pt:'faz escurecer',gram:'Hifil Particípio — raiz ע-ר-ב'},
+      {heb:'עֲרָבִים',tr:'a·ra·vím',pt:'tardas / entardeceres',gram:'Subst. masc. plural'},
+    ],
+    contexto:'A oração de <strong>Arvit</strong> (ou Maariv) marca a transição do dia para a noite. A fórmula <strong>בָּרוּךְ אַתָּה יְהוָה</strong> (Baruch Atá Adonái) é o padrão de abertura de todas as bênçãos judaicas — aparece mais de 100 vezes na liturgia diária.'
+  },
+  {
+    id:'amida', nome:'עֲמִידָה', translit:'A·mi·dá', pt:'A Oração em Pé',
+    categoria:'Oração Central', quando:'Três vezes ao dia — a espinha dorsal da liturgia',
+    versos:[
+      {heb:'אֲדֹנָי שְׂפָתַי תִּפְתָּח', tr:'A·do·nái se·fa·tai tif·tách', pt:'Senhor, abre meus lábios'},
+      {heb:'וּפִי יַגִּיד תְּהִלָּתֶךָ׃', tr:'u·fí ya·gíd te·hi·la·te·chá', pt:'e minha boca proclamará Teu louvor'},
+    ],
+    palavras:[
+      {heb:'שְׂפָתַי',tr:'se·fa·tai',pt:'meus lábios',gram:'שָׂפָה (lábio) + sufixo dual 1ª'},
+      {heb:'תִּפְתָּח',tr:'tif·tách',pt:'abrirás / abre',gram:'Qal Imperfeito 2ª masc. sing.'},
+      {heb:'יַגִּיד',tr:'ya·gíd',pt:'proclamará / declarará',gram:'Hifil Imperfeito 3ª masc. sing.'},
+      {heb:'תְּהִלָּתֶךָ',tr:'te·hi·la·te·chá',pt:'Teu louvor',gram:'תְּהִלָּה + sufixo 2ª masc. — raiz ה-ל-ל'},
+    ],
+    contexto:'A <strong>Amidá</strong> ("em pé") é recitada de pé, em silêncio, voltado para Jerusalém. Contém 18 bênçãos (Shemone Esré) cobrindo louvor, petições e agradecimento. A abertura é o versículo <strong>Salmo 51:17</strong> — Davi pedindo a Deus que abra sua boca para o louvor.'
+  },
+];
+
+const oTabs = document.getElementById('oracaoTabs');
+const oPanels = document.getElementById('oracaoPanels');
+if(oTabs && oPanels){
+  oracoesData.forEach((o,i)=>{
+    const t = document.createElement('button');
+    t.className = 'oracao-tab' + (i===0?' active':'');
+    t.textContent = o.pt.split(' ').slice(0,3).join(' ');
+    t.onclick = function(){
+      document.querySelectorAll('.oracao-tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.oracao-panel').forEach(x=>x.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById('op-'+i).classList.add('active');
+    };
+    oTabs.appendChild(t);
+
+    const p = document.createElement('div');
+    p.className = 'oracao-panel' + (i===0?' active':'');
+    p.id = 'op-'+i;
+
+    const versosHtml = o.versos.map(v=>`
+      <div style="margin-bottom:10px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--text);direction:rtl;line-height:1.9;">${v.heb}</div>
+        <div style="font-size:13px;color:var(--blue);font-style:italic;">${v.tr}</div>
+        <div style="font-size:13px;color:var(--muted);">${v.pt}</div>
+      </div>`).join('<div style="height:6px;"></div>');
+
+    const palavrasHtml = o.palavras.map(pw=>`
+      <div class="palavra-row reveal">
+        <div class="pw-heb">${pw.heb}</div>
+        <div><div class="pw-translit">${pw.tr}</div><div class="pw-grammar">${pw.gram}</div></div>
+        <div class="pw-meaning">${pw.pt}</div>
+      </div>`).join('');
+
+    p.innerHTML = `
+      <div class="oracao-card reveal">
+        <div class="oracao-header">
+          <div class="oracao-categoria">${o.categoria}</div>
+          <div class="oracao-nome-heb">${o.nome}</div>
+          <div class="oracao-nome-pt">${o.translit} — ${o.pt}</div>
+          <div class="oracao-quando">${o.quando}</div>
+        </div>
+        <div class="oracao-body">
+          <div class="oracao-texto-wrap">
+            ${versosHtml}
+          </div>
+          <div class="sec-label" style="margin-bottom:12px;">Análise palavra por palavra</div>
+          <div class="oracao-analise">${palavrasHtml}</div>
+          <div class="oracao-contexto">
+            <div class="oracao-ctx-title">📖 Contexto e significado</div>
+            <div class="oracao-ctx-text">${o.contexto}</div>
+          </div>
+        </div>
+      </div>`;
+    oPanels.appendChild(p);
+  });
+}
+
+/* ══ FESTAS DATA ══ */
+const festasData = [
+  {heb:'שַׁבָּת', tr:'Sha·bát', nome:'Shabat', data:'Todo sexta à noite — sábado',
+   desc:'O sétimo dia de descanso, santificado por Deus em Gênesis 2:3. A família acende velas, abençoa o vinho (Kidush) e o pão trançado (Chalá).',
+   bHeb:'בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו',
+   bTr:'Baruch atá Adonái... asher kideshanu bemitzvotav',
+   bPt:'Bendito és Tu, SENHOR... que nos santificaste com Seus mandamentos'},
+  {heb:'פֶּסַח', tr:'Pés·sach', nome:'Páscoa Judaica', data:'14 de Nisã (março/abril)',
+   desc:'Celebra a libertação do Egito. A Páscoa que Jesus celebrou na última ceia. Inclui o Seder (ordem litúrgica), Matzá (pão sem fermento) e a leitura da Hagadá.',
+   bHeb:'הָא לַחְמָא עַנְיָא דִּי אֲכָלוּ אַבְהָתָנָא בְּאַרְעָא דְמִצְרָיִם',
+   bTr:'Há lachmá aniá di akhalu avhatana bearáa demitzráim',
+   bPt:'Este é o pão da aflição que nossos pais comeram na terra do Egito'},
+  {heb:'רֹאשׁ הַשָּׁנָה', tr:'Rosh ha·Sha·ná', nome:'Ano Novo Judaico', data:'1-2 de Tishri (set/out)',
+   desc:'Início do ano hebraico. Toca-se o Shofar (chifre de carneiro) — símbolo de despertar espiritual. Período de reflexão e arrependimento (Yamim Noraim — Dias Tremendos).',
+   bHeb:'תִּכָּתֵב וְתֵחָתֵם לְשָׁנָה טוֹבָה',
+   bTr:'Tikkatéiv vetechateím leshaná tová',
+   bPt:'Que sejas inscrito e selado para um bom ano'},
+  {heb:'יוֹם כִּפּוּר', tr:'Yom Ki·púr', nome:'Dia do Perdão', data:'10 de Tishri — 10 dias após Rosh Hashaná',
+   desc:'O dia mais sagrado do calendário judaico. Jejum de 25h, confissão de pecados (Viddui). O Sumo Sacerdote entrava no Santo dos Santos. Levítico 16 descreve o ritual original.',
+   bHeb:'כִּי בַיּוֹם הַזֶּה יְכַפֵּר עֲלֵיכֶם לְטַהֵר אֶתְכֶם',
+   bTr:'Ki vayom hazé yecaper aleichem letaher etchem',
+   bPt:'Pois neste dia Ele fará expiação por vós para purificar-vos — Lv 16:30'},
+  {heb:'סֻכּוֹת', tr:'Su·cót', nome:'Festa dos Tabernáculos', data:'15-22 de Tishri (out)',
+   desc:'Celebra os 40 anos no deserto e a colheita. Constrói-se uma cabana (Sucá) para habitar 7 dias, lembrando a proteção divina no deserto. Jesus celebrou esta festa (Jo 7:2).',
+   bHeb:'בַּסֻּכֹּת תֵּשְׁבוּ שִׁבְעַת יָמִים',
+   bTr:'Basucot teshvu shivat yamim',
+   bPt:'Em cabanas habitareis sete dias — Levítico 23:42'},
+  {heb:'חֲנֻכָּה', tr:'Cha·nu·cá', nome:'Festa das Luzes', data:'25 de Kislev (nov/dez)',
+   desc:'Comemora a rededicação do Templo em 165 a.C. após a vitória dos Macabeus. O milagre do azeite que durou 8 dias. Acende-se o Chanukiá (candelabro de 9 braços).',
+   bHeb:'בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם שֶׁעָשָׂה נִסִּים לַאֲבוֹתֵינוּ',
+   bTr:'Baruch atá Adonái... sheása nissim laavotéinu',
+   bPt:'Bendito és Tu, SENHOR... que fizeste milagres para nossos pais'},
+  {heb:'שָׁבוּעוֹת', tr:'Sha·vu·ót', nome:'Pentecostes / Semanas', data:'6-7 de Sivã (maio/junho)',
+   desc:'Celebra a entrega da Torá no Sinai e a primeira colheita. 50 dias após a Páscoa — é o Pentecostes bíblico (At 2:1). A Lei foi dada em fogo e o Espírito desceu em fogo.',
+   bHeb:'וְהָיִיתֶם לִי סְגֻלָּה מִכָּל הָעַמִּים',
+   bTr:'Vehayitem li segulá mikol haamim',
+   bPt:'E sereis para Mim um tesouro especial dentre todos os povos — Êx 19:5'},
+];
+
+const fg = document.getElementById('festaGrid');
+if(fg){
+  festasData.forEach(f=>{
+    const c = document.createElement('div');
+    c.className = 'festa-card reveal';
+    c.innerHTML = `
+      <div class="festa-top">
+        <div class="festa-heb">${f.heb}</div>
+        <div class="festa-translit">${f.tr}</div>
+        <div class="festa-nome">${f.nome}</div>
+        <div class="festa-data">📅 ${f.data}</div>
+      </div>
+      <div class="festa-body">
+        <div class="festa-desc">${f.desc}</div>
+        <div class="festa-bencao">
+          <div class="festa-bencao-heb">${f.bHeb.substring(0,60)}...</div>
+          <div class="festa-bencao-tr">${f.bTr}</div>
+          <div class="festa-bencao-pt">${f.bPt}</div>
+        </div>
+      </div>`;
+    fg.appendChild(c);
+  });
+}
+
+/* ══ BÊNÇÃOS DATA ══ */
+const bencaosData = [
+  {nome:'Kidush — Bênção do Vinho', quando:'Shabat e festas',
+   heb:'בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם בּוֹרֵא פְּרִי הַגָּפֶן׃',
+   tr:'Ba·rúch a·tá A·do·nái E·lo·héi·nu mé·lech ha·o·lám bo·ré pe·rí ha·gá·fen.',
+   pt:'Bendito és Tu, SENHOR nosso Deus, Rei do universo, que crias o fruto da videira.',
+   palavras:[
+     {heb:'בּוֹרֵא',tr:'bo·ré',pt:'que crias',gram:'Qal Particípio — raiz ב-ר-א (criar)'},
+     {heb:'פְּרִי',tr:'pe·rí',pt:'fruto',gram:'Subst. masc. sing.'},
+     {heb:'הַגָּפֶן',tr:'ha·gá·fen',pt:'a videira',gram:'Artigo + subst. fem. sing.'},
+   ]},
+  {nome:'HaMotzí — Bênção do Pão', quando:'Antes das refeições',
+   heb:'בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם הַמּוֹצִיא לֶחֶם מִן הָאָרֶץ׃',
+   tr:'Ba·rúch a·tá A·do·nái E·lo·héi·nu mé·lech ha·o·lám ha·mo·tzí lé·chem min ha·á·retz.',
+   pt:'Bendito és Tu, SENHOR nosso Deus, Rei do universo, que fazes sair o pão da terra.',
+   palavras:[
+     {heb:'הַמּוֹצִיא',tr:'ha·mo·tzí',pt:'que fazes sair',gram:'Hifil Particípio — raiz י-צ-א'},
+     {heb:'לֶחֶם',tr:'lé·chem',pt:'pão / alimento',gram:'Subst. masc. sing. — raiz de Belém'},
+     {heb:'הָאָרֶץ',tr:'ha·á·retz',pt:'a terra',gram:'Artigo + subst. fem. sing.'},
+   ]},
+  {nome:'Birkat Hamazón — Graças após as Refeições', quando:'Após comer',
+   heb:'בָּרוּךְ אַתָּה יְהוָה הַזָּן אֶת הַכֹּל׃',
+   tr:'Ba·rúch a·tá A·do·nái ha·zán et ha·kól.',
+   pt:'Bendito és Tu, SENHOR, que alimentas a todos.',
+   palavras:[
+     {heb:'הַזָּן',tr:'ha·zán',pt:'que alimenta / nutre',gram:'Hifil Particípio — raiz ז-ו-ן'},
+     {heb:'הַכֹּל',tr:'ha·kól',pt:'a todos / tudo',gram:'Artigo + pronome indefinido'},
+   ]},
+  {nome:'Birkat Kohanim — Bênção Sacerdotal', quando:'Cerimônia litúrgica — Números 6:24-26',
+   heb:'יְבָרֶכְךָ יְהוָה וְיִשְׁמְרֶךָ׃ יָאֵר יְהוָה פָּנָיו אֵלֶיךָ וִיחֻנֶּךָּ׃ יִשָּׂא יְהוָה פָּנָיו אֵלֶיךָ וְיָשֵׂם לְךָ שָׁלוֹם׃',
+   tr:'Ye·va·re·che·chá A·do·nái ve·yish·me·re·chá. Yá·er A·do·nái pa·náv e·lé·cha vi·chu·né·ka. Yi·sá A·do·nái pa·náv e·lé·cha ve·ya·sém le·chá sha·lóm.',
+   pt:'O SENHOR te abençoe e te guarde. O SENHOR faça resplandecer o Seu rosto sobre ti e te seja gracioso. O SENHOR levante o Seu rosto sobre ti e te dê paz.',
+   palavras:[
+     {heb:'יְבָרֶכְךָ',tr:'ye·va·re·che·chá',pt:'que te abençoe',gram:'Piel Jussivo + sufixo 2ª masc.'},
+     {heb:'יִשְׁמְרֶךָ',tr:'yish·me·re·chá',pt:'que te guarde',gram:'Qal Jussivo + sufixo 2ª masc.'},
+     {heb:'יָאֵר',tr:'yá·er',pt:'faça resplandecer',gram:'Hifil Jussivo — raiz א-ו-ר (luz)'},
+     {heb:'שָׁלוֹם',tr:'sha·lóm',pt:'paz / completude',gram:'Subst. masc. sing. — raiz שׁ-ל-מ'},
+   ]},
+];
+
+const bl = document.getElementById('bencaoList');
+if(bl){
+  bencaosData.forEach(b=>{
+    const d = document.createElement('div');
+    d.className = 'oracao-card reveal';
+    d.style.marginBottom = '20px';
+    const pwHtml = b.palavras.map(pw=>`
+      <div class="palavra-row reveal">
+        <div class="pw-heb">${pw.heb}</div>
+        <div><div class="pw-translit">${pw.tr}</div><div class="pw-grammar">${pw.gram}</div></div>
+        <div class="pw-meaning">${pw.pt}</div>
+      </div>`).join('');
+    d.innerHTML = `
+      <div class="oracao-header">
+        <div class="oracao-categoria">${b.quando}</div>
+        <div class="oracao-nome-pt" style="font-size:20px;">${b.nome}</div>
+      </div>
+      <div class="oracao-body">
+        <div class="oracao-texto-wrap">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,22px);color:var(--text);direction:rtl;line-height:2.2;margin-bottom:14px;">${b.heb}</div>
+          <div class="oracao-divider"></div>
+          <div style="font-size:14px;color:var(--blue);font-style:italic;margin-bottom:8px;line-height:1.9;">${b.tr}</div>
+          <div style="font-size:14px;color:var(--muted);font-style:italic;line-height:1.8;">${b.pt}</div>
+        </div>
+        <div class="sec-label" style="margin-bottom:12px;">Palavras-chave</div>
+        <div class="oracao-analise">${pwHtml}</div>
+      </div>`;
+    bl.appendChild(d);
+  });
+}
+
+setTimeout(()=>{document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));},800);
 </script>
 </body>
 </html>
