@@ -231,6 +231,77 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:0 20px;height:56px;b
 /* ANTI COPY */
 .no-select{-webkit-user-select:none;-moz-user-select:none;user-select:none;}
 
+/* ── SIMULADO ── */
+.simulado-nivel-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.sim-nivel-btn{flex:1;min-width:160px;padding:16px 20px;border-radius:14px;border:2px solid var(--border);background:var(--card);cursor:pointer;transition:all 0.2s;text-align:center;font-family:'DM Sans',sans-serif;}
+.sim-nivel-btn:hover{transform:translateY(-2px);}
+.sim-nivel-btn.basico:hover,.sim-nivel-btn.basico.active{border-color:var(--teal);background:rgba(69,196,160,0.07);}
+.sim-nivel-btn.intermediario:hover,.sim-nivel-btn.intermediario.active{border-color:var(--gold);background:rgba(200,164,74,0.07);}
+.sim-nivel-btn.avancado:hover,.sim-nivel-btn.avancado.active{border-color:var(--rose);background:rgba(224,112,112,0.07);}
+.sim-nivel-btn .snb-dot{width:10px;height:10px;border-radius:50%;margin:0 auto 8px;}
+.sim-nivel-btn.basico .snb-dot{background:var(--teal);}
+.sim-nivel-btn.intermediario .snb-dot{background:var(--gold);}
+.sim-nivel-btn.avancado .snb-dot{background:var(--rose);}
+.sim-nivel-btn .snb-label{font-size:14px;font-weight:600;color:var(--text);}
+.sim-nivel-btn .snb-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+
+.simulado-arena{display:none;}
+.simulado-arena.active{display:block;}
+
+.sim-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+.sim-titulo{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text);}
+.sim-progresso{display:flex;align-items:center;gap:10px;}
+.sim-prog-label{font-size:12px;color:var(--muted);}
+.sim-prog-bar{width:120px;height:6px;background:var(--border);border-radius:99px;overflow:hidden;}
+.sim-prog-fill{height:100%;border-radius:99px;transition:width 0.4s ease;}
+.sim-prog-num{font-size:12px;font-weight:600;}
+
+.sim-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;min-height:320px;display:flex;flex-direction:column;}
+.sim-pergunta-num{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.sim-pergunta-heb{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--gold);direction:rtl;text-align:center;margin:12px 0 8px;line-height:1.1;}
+.sim-pergunta-texto{font-size:17px;color:var(--text);margin-bottom:8px;line-height:1.6;font-weight:500;}
+.sim-pergunta-hint{font-size:13px;color:var(--muted);margin-bottom:28px;font-style:italic;}
+.sim-opcoes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;}
+@media(max-width:560px){.sim-opcoes{grid-template-columns:1fr;}}
+.sim-opcao{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;font-size:14px;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;color:var(--text);text-align:left;display:flex;align-items:center;gap:10px;}
+.sim-opcao:hover:not(:disabled){border-color:var(--gold);background:var(--gold-dim);}
+.sim-opcao .so-letra{width:24px;height:24px;border-radius:50%;background:var(--faint);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0;}
+.sim-opcao.correta{border-color:var(--teal)!important;background:rgba(69,196,160,0.1)!important;color:var(--teal)!important;}
+.sim-opcao.correta .so-letra{background:var(--teal);color:#000;}
+.sim-opcao.errada{border-color:var(--rose)!important;background:rgba(224,112,112,0.1)!important;color:var(--rose)!important;}
+.sim-opcao.errada .so-letra{background:var(--rose);color:#fff;}
+.sim-opcao.revelar{border-color:var(--teal)!important;background:rgba(69,196,160,0.05)!important;}
+
+.sim-feedback{margin-top:16px;padding:14px 18px;border-radius:12px;font-size:14px;line-height:1.7;display:none;}
+.sim-feedback.show{display:block;}
+.sim-feedback.certo{background:rgba(69,196,160,0.08);border:1px solid rgba(69,196,160,0.3);color:var(--teal);}
+.sim-feedback.errou{background:rgba(224,112,112,0.08);border:1px solid rgba(224,112,112,0.3);color:var(--rose);}
+.sim-feedback strong{color:var(--text);}
+
+.sim-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:10px;}
+.sim-pontos{font-size:13px;color:var(--muted);}
+.sim-pontos span{color:var(--teal);font-weight:700;font-size:16px;}
+
+/* RESULTADO FINAL */
+.sim-resultado{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px 36px;text-align:center;display:none;}
+.sim-resultado.show{display:block;}
+.sim-res-circulo{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;border:3px solid;}
+.sim-res-circulo.perfeito{border-color:var(--gold);color:var(--gold);background:rgba(200,164,74,0.1);}
+.sim-res-circulo.otimo{border-color:var(--teal);color:var(--teal);background:rgba(69,196,160,0.1);}
+.sim-res-circulo.bom{border-color:var(--blue);color:var(--blue);background:rgba(101,144,232,0.1);}
+.sim-res-circulo.estudar{border-color:var(--rose);color:var(--rose);background:rgba(224,112,112,0.1);}
+.sim-res-titulo{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);margin-bottom:8px;}
+.sim-res-msg{font-size:15px;color:var(--muted);line-height:1.8;max-width:440px;margin:0 auto 24px;}
+.sim-res-detalhes{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.sim-res-stat{background:var(--card2);border-radius:12px;padding:14px 22px;text-align:center;}
+.sim-res-stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;}
+.sim-res-stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px;}
+.sim-res-erros{text-align:left;max-width:480px;margin:0 auto 24px;}
+.sim-res-erros-title{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;}
+.sim-res-erro-item{background:var(--card2);border-radius:10px;padding:12px 14px;margin-bottom:8px;font-size:13px;color:var(--muted);line-height:1.6;}
+.sim-res-erro-item strong{color:var(--text);}
+.sim-estrelas{font-size:28px;letter-spacing:4px;margin-bottom:8px;}
+
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden;}
@@ -918,6 +989,7 @@ function checkPassword(){
       </div>
       <div class="sidebar-group-items open">
         <div class="sidebar-item especial" onclick="irParaFechar('quiz')"><span class="si-num">✦</span><span class="si-dot"></span>Quiz do Alfabeto</div>
+        <div class="sidebar-item especial" onclick="irParaFechar('simulado')"><span class="si-num">✦</span><span class="si-dot"></span>Simulado por Nível</div>
         <div class="sidebar-item especial" onclick="irParaFechar('cronograma')"><span class="si-num">✦</span><span class="si-dot"></span>Cronograma de Estudos</div>
       </div>
     </div>
@@ -1941,6 +2013,87 @@ function checkPassword(){
 
 <div class="divider"></div>
 
+<!-- ══ SIMULADO POR NÍVEL ══ -->
+<section id="simulado">
+  <div class="sec-label">Avaliação</div>
+  <h2 class="sec-title reveal">Simulado por Nível</h2>
+  <p class="sec-desc reveal">10 perguntas por nível para testar seus conhecimentos. Escolha seu nível e veja como você está!</p>
+
+  <!-- SELEÇÃO DE NÍVEL -->
+  <div class="simulado-nivel-tabs reveal" id="simNivelTabs">
+    <button class="sim-nivel-btn basico" onclick="iniciarSimulado('basico',this)">
+      <div class="snb-dot"></div>
+      <div class="snb-label">🟢 Básico</div>
+      <div class="snb-sub">Alfabeto · Frases · Gramática inicial</div>
+    </button>
+    <button class="sim-nivel-btn intermediario" onclick="iniciarSimulado('intermediario',this)">
+      <div class="snb-dot"></div>
+      <div class="snb-label">🟡 Intermediário</div>
+      <div class="snb-sub">Nikud · Binyanim · Sintaxe</div>
+    </button>
+    <button class="sim-nivel-btn avancado" onclick="iniciarSimulado('avancado',this)">
+      <div class="snb-dot"></div>
+      <div class="snb-label">🔴 Avançado</div>
+      <div class="snb-sub">Exegese · Liturgia · Manuscritos</div>
+    </button>
+  </div>
+
+  <!-- ARENA DO SIMULADO -->
+  <div class="simulado-arena" id="simArena">
+    <div class="sim-header">
+      <div class="sim-titulo" id="simTitulo">Simulado Básico</div>
+      <div class="sim-progresso">
+        <span class="sim-prog-label">Questão</span>
+        <div class="sim-prog-bar"><div class="sim-prog-fill" id="simProgFill" style="width:10%;background:var(--teal);"></div></div>
+        <span class="sim-prog-num" id="simProgNum">1/10</span>
+      </div>
+    </div>
+
+    <div class="sim-card" id="simCard">
+      <div class="sim-pergunta-num" id="simPergNum">Pergunta 1 de 10</div>
+      <div class="sim-pergunta-heb" id="simPergHeb" style="display:none;"></div>
+      <div class="sim-pergunta-texto" id="simPergTexto"></div>
+      <div class="sim-pergunta-hint" id="simPergHint"></div>
+      <div class="sim-opcoes" id="simOpcoes"></div>
+      <div class="sim-feedback" id="simFeedback"></div>
+    </div>
+
+    <div class="sim-nav">
+      <div class="sim-pontos">Acertos: <span id="simPontos">0</span></div>
+      <button class="btn-gold" id="simProxBtn" onclick="simProxima()" style="display:none;">Próxima ▸</button>
+    </div>
+  </div>
+
+  <!-- RESULTADO FINAL -->
+  <div class="sim-resultado" id="simResultado">
+    <div class="sim-estrelas" id="simEstrelas">⭐⭐⭐⭐⭐</div>
+    <div class="sim-res-circulo" id="simResCirculo">10/10</div>
+    <div class="sim-res-titulo" id="simResTitulo">Excelente!</div>
+    <div class="sim-res-msg" id="simResMsg"></div>
+    <div class="sim-res-detalhes">
+      <div class="sim-res-stat">
+        <div class="sim-res-stat-n" id="simResAcertos" style="color:var(--teal);">0</div>
+        <div class="sim-res-stat-l">Acertos</div>
+      </div>
+      <div class="sim-res-stat">
+        <div class="sim-res-stat-n" id="simResErros" style="color:var(--rose);">0</div>
+        <div class="sim-res-stat-l">Erros</div>
+      </div>
+      <div class="sim-res-stat">
+        <div class="sim-res-stat-n" id="simResPct" style="color:var(--gold);">0%</div>
+        <div class="sim-res-stat-l">Aproveitamento</div>
+      </div>
+    </div>
+    <div class="sim-res-erros" id="simResErrosLista"></div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-gold" onclick="reiniciarSimulado()">Tentar novamente ↺</button>
+      <button class="btn-outline" onclick="voltarNiveis()">Escolher outro nível</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ══ CRONOGRAMA ══ -->
 <section id="cronograma">
   <div class="sec-label">Planejamento</div>
@@ -2784,6 +2937,255 @@ function renderCrono(){
 renderCrono();
 
 setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el)); }, 1000);
+
+/* ══ SIMULADO POR NÍVEL ══ */
+const simPerguntas = {
+  basico: [
+    {texto:'Qual é o nome desta letra?', heb:'א', hint:'É a primeira letra do alfabeto hebraico',
+     opcoes:['Alef','Bet','Guimel','Dalet'], correta:0,
+     explicacao:'<strong>א (Alef)</strong> é a primeira letra do alef-bet hebraico. É uma letra silenciosa — não tem som próprio, recebe o som da vogal ao lado.'},
+    {texto:'Como se diz "paz" em hebraico?', heb:'', hint:'Também é usada como saudação',
+     opcoes:['תּוֹדָה','שָׁלוֹם','כֵּן','לֹא'], correta:1,
+     explicacao:'<strong>שָׁלוֹם (Shalom)</strong> significa paz, mas também completude e bem-estar. É usada como "olá" e "tchau" em hebraico. Raiz: שׁ-ל-מ.'},
+    {texto:'Quantas letras tem o alfabeto hebraico?', heb:'', hint:'Todas são consoantes',
+     opcoes:['20','22','24','26'], correta:1,
+     explicacao:'O <strong>alef-bet</strong> tem exatamente <strong>22 letras</strong>, todas consoantes. As vogais são marcadas com sinais separados chamados <em>nikud</em>.'},
+    {texto:'Qual é o artigo definido em hebraico?', heb:'', hint:'É sempre um prefixo',
+     opcoes:['אֶת','הַ / הָ','לְ','בְּ'], correta:1,
+     explicacao:'<strong>הַ (ha)</strong> é o artigo definido — equivale a "o, a, os, as". Torna-se <strong>הָ</strong> diante de letras guturais. Ex: הַמֶּלֶךְ = o rei.'},
+    {texto:'O que significa a raiz כ-ת-ב?', heb:'כ–ת–ב', hint:'Pense em escribas e documentos',
+     opcoes:['Falar','Escrever','Caminhar','Guardar'], correta:1,
+     explicacao:'A raiz <strong>כ-ת-ב</strong> carrega a ideia central de <strong>escrever/inscrever</strong>. Dela derivam: כָּתַב (ele escreveu), מִכְתָּב (carta), כְּתָב (escrita).'},
+    {texto:'O que é uma "raiz trilíteral"?', heb:'', hint:'É a base de quase todas as palavras hebraicas',
+     opcoes:['Uma frase de 3 palavras','Uma raiz de 3 consoantes','Um verbo com 3 tempos','Um prefixo triplo'], correta:1,
+     explicacao:'A <strong>raiz trilíteral</strong> (שׁרשׁ — shoresh) é um conjunto de <strong>3 consoantes</strong> que carrega o significado central de uma família de palavras. Dominá-las é a chave para expandir vocabulário.'},
+    {texto:'Como se diz "obrigado" em hebraico?', heb:'', hint:'Vem da raiz ה-ו-ד (louvar, confessar)',
+     opcoes:['שָׁלוֹם','בְּבַקָּשָׁה','תּוֹדָה','לְהִתְרָאוֹת'], correta:2,
+     explicacao:'<strong>תּוֹדָה (Todá)</strong> significa obrigado/a. Vem da raiz ה-ו-ד que significa louvar, confessar, agradecer — a mesma raiz de הוֹדָיָה (hodaiá = louvor).'},
+    {texto:'O que indica a terminação ִים– nos substantivos?', heb:'ִים–', hint:'Ex: מְלָכִים = reis',
+     opcoes:['Feminino singular','Masculino singular','Masculino plural','Feminino plural'], correta:2,
+     explicacao:'A terminação <strong>ִים– (-im)</strong> indica <strong>masculino plural</strong>. Ex: מֶלֶךְ (rei) → מְלָכִים (reis). A terminação feminina plural é וֹת– (-ot).'},
+    {texto:'O que significa o prefixo בְּ?', heb:'בְּ', hint:'Aparece em בְּרֵאשִׁית (no princípio)',
+     opcoes:['E / mas','Para / a','Em / por / com','De / desde'], correta:2,
+     explicacao:'O prefixo <strong>בְּ</strong> significa <strong>em, por, com</strong>. Em בְּרֵאשִׁית = "no princípio". Em בְּשָׁלוֹם = "em paz". É um dos prefixos mais frequentes do hebraico bíblico.'},
+    {texto:'O hebraico é lido em qual direção?', heb:'', hint:'O oposto do português',
+     opcoes:['Esquerda para direita','De cima para baixo','Direita para esquerda','Em círculo'], correta:2,
+     explicacao:'O hebraico é escrito e lido da <strong>direita para a esquerda</strong>. Isso vale para letras, palavras, frases e livros inteiros — o texto começa no que seria o "final" para quem lê português.'},
+  ],
+  intermediario: [
+    {texto:'Qual vogal massorética (nikud) representa o som "A longo"?', heb:'', hint:'Parece um pequeno T abaixo da letra',
+     opcoes:['Patakh (בַ)','Qametz (בָ)','Segol (בֶ)','Khirik (בִ)'], correta:1,
+     explicacao:'O <strong>Qametz (בָ)</strong> representa o som A longo. O Patakh (בַ) é A curto. Ambos soam como "A" em português, mas o Qametz dura um pouco mais.'},
+    {texto:'Quantos Binyanim (padrões verbais) tem o hebraico bíblico?', heb:'', hint:'São os padrões que modificam o sentido da raiz',
+     opcoes:['5','6','7','9'], correta:2,
+     explicacao:'O hebraico bíblico tem <strong>7 Binyanim</strong>: Qal, Nifal, Piel, Pual, Hitpael, Hifil e Hofal. Cada um modifica o sentido da raiz (ativo, passivo, reflexivo, intensivo, causativo).'},
+    {texto:'O binyan QAL expressa:', heb:'', hint:'É o mais simples e comum na Bíblia',
+     opcoes:['Ação causativa','Ação reflexiva intensa','Ação passiva','Ação simples e direta'], correta:3,
+     explicacao:'O <strong>Qal</strong> é o binyan básico — expressa a ação mais simples e direta de uma raiz. A maioria dos verbos na narrativa bíblica está no Qal.'},
+    {texto:'Qual é a ordem sintática predominante nas narrativas hebraicas?', heb:'', hint:'Diferente do português (SVO)',
+     opcoes:['SVO','OVS','VSO','SOV'], correta:2,
+     explicacao:'O hebraico bíblico narrativo usa predominantemente a ordem <strong>VSO</strong> (Verbo-Sujeito-Objeto). Ex: בָּרָא אֱלֹהִים = "Criou Deus" — o verbo vem antes do sujeito.'},
+    {texto:'O que é o Vav Consecutivo?', heb:'וַיִּ', hint:'É a construção mais comum nas narrativas',
+     opcoes:['Uma conjunção que liga orações','Um prefixo que inverte o tempo verbal','Uma partícula de negação','Um tipo de Daghesh'], correta:1,
+     explicacao:'O <strong>Vav Consecutivo</strong> é um prefixo וַ que, adicionado ao imperfeito, <strong>inverte seu tempo para passado</strong>. É a espinha dorsal das narrativas bíblicas: וַיֹּאמֶר = "e ele disse".'},
+    {texto:'Como se lê o pronome "eu" em hebraico?', heb:'אֲנִי', hint:'É frequentemente omitido na fala',
+     opcoes:['Hu','At','Aní','Hem'], correta:2,
+     explicacao:'<strong>אֲנִי (Aní)</strong> = eu. Em hebraico, o pronome sujeito é frequentemente omitido porque a forma verbal já indica a pessoa. Quando aparece, é para dar ênfase.'},
+    {texto:'O binyan NIFAL expressa:', heb:'', hint:'Pense em "foi feito", "foi visto"',
+     opcoes:['Ação ativa intensa','Ação causativa','Ação passiva ou reflexiva','Ação recíproca'], correta:2,
+     explicacao:'O <strong>Nifal</strong> é o passivo/reflexivo do Qal. Ex: נִכְתַּב = "foi escrito" (passivo); נִרְאָה = "apareceu / foi visto" (reflexivo).'},
+    {texto:'O que é o "parsing" verbal?', heb:'', hint:'É a habilidade central do exegeta',
+     opcoes:['Traduzir um versículo','Identificar raiz, binyan, tempo, pessoa e número de um verbo','Comparar manuscritos','Analizar poesia bíblica'], correta:1,
+     explicacao:'O <strong>parsing</strong> é a identificação completa de uma forma verbal: raiz, binyan, tempo (perfeito/imperfeito), pessoa (1ª/2ª/3ª), número (sing./pl.) e gênero (masc./fem.).'},
+    {texto:'Qual partícula marca o objeto direto definido em hebraico?', heb:'אֵת', hint:'Não tem tradução em português',
+     opcoes:['הַ','לְ','אֵת','מִן'], correta:2,
+     explicacao:'A partícula <strong>אֵת</strong> marca o objeto direto definido. Em Gn 1:1: "criou Deus <strong>אֵת</strong> os céus" — indica que "os céus" é o objeto direto. Não tem equivalente em português.'},
+    {texto:'O que o Daghesh Forte indica dentro de uma consoante?', heb:'שַׁבָּת', hint:'Ex: שַׁבָּת = Shab-bat',
+     opcoes:['Que a letra é silenciosa','Que a letra deve ser duplicada','Que há uma vogal longa','Que é uma letra gútural'], correta:1,
+     explicacao:'O <strong>Daghesh Forte</strong> (ponto dentro da letra) indica que a consoante é <strong>geminada (dobrada)</strong>. שַׁבָּת = Shab-bat (não Sha-bat). Equivale a duas letras iguais seguidas.'},
+  ],
+  avancado: [
+    {texto:'O acento massorético Atnakh (֑) tem qual função?', heb:'א֑', hint:'Aparece no meio de cada versículo',
+     opcoes:['Indica o fim do versículo','Divide o versículo ao meio como pausa principal','Indica que a palavra é nome próprio','Sinaliza uma nota marginal'], correta:1,
+     explicacao:'O <strong>Atnakh (֑)</strong> é o acento disjuntivo mais forte — divide o versículo ao meio como um "ponto e vírgula musical". Em Gn 1:1, aparece sob אֱלֹהִים, separando "criou Deus" de "os céus e a terra".'},
+    {texto:'Por que o verbo בָּרָא (criou) é teologicamente significativo?', heb:'בָּרָא', hint:'Observe quem pode ser sujeito deste verbo',
+     opcoes:['É o verbo mais antigo da Bíblia','Só aparece com Deus como sujeito','Significa criar do nada (ex nihilo)','Está sempre no imperfeito'], correta:1,
+     explicacao:'Na Bíblia Hebraica, <strong>בָּרָא</strong> aparece <strong>exclusivamente com Deus como sujeito</strong> — nunca com seres humanos. Isso distingue o ato criador divino de qualquer fabricação humana.'},
+    {texto:'O que é o "plural de majestade" em אֱלֹהִים?', heb:'אֱלֹהִים', hint:'O verbo בָּרָא está no singular',
+     opcoes:['Um erro de cópia dos escribas','Indica que há vários deuses','Plural que expressa plenitude ou majestade, mas verbo no singular','Uma forma arcaica de plural comum'], correta:2,
+     explicacao:'<strong>אֱלֹהִים</strong> tem terminação plural (ִים) mas o verbo בָּרָא está no singular. Este "pluralis maiestatis" expressa <strong>plenitude e soberania</strong>. O judaísmo o interpreta como majestade; o cristianismo frequentemente relaciona à Trindade.'},
+    {texto:'Qual manuscrito hebraico mais antigo completo é base da BHS?', heb:'', hint:'Data de 1008 d.C.',
+     opcoes:['Rolo do Mar Morto (1QIsa)','Códice de Alepo','Códice de Leningrado','Pentateuco Samaritano'], correta:2,
+     explicacao:'O <strong>Códice de Leningrado</strong> (1008 d.C.) é o manuscrito mais antigo do Antigo Testamento em hebraico <em>completo</em>. É a base da <em>Biblia Hebraica Stuttgartensia</em> (BHS) usada em universidades.'},
+    {texto:'O Shema Israel (Dt 6:4) começa com שְׁמַע — qual é a forma verbal?', heb:'שְׁמַע', hint:'É uma ordem direta',
+     opcoes:['Qal Perfeito 3ª masc.','Qal Imperativo 2ª masc. sing.','Nifal Imperfeito','Hifil Particípio'], correta:1,
+     explicacao:'<strong>שְׁמַע</strong> é um <strong>Qal Imperativo 2ª masc. sing.</strong> — uma ordem direta: "Ouve!" A confissão de fé judaica começa com um imperativo, exigindo escuta ativa e obediência.'},
+    {texto:'O que distingue עַלְמָה (Is 7:14) na comparação TM vs LXX?', heb:'עַלְמָה', hint:'Há uma diferença de tradução significativa',
+     opcoes:['TM usa "jovem", LXX usa "virgem" (παρθένος)','Ambos usam "virgem"','TM usa "virgem", LXX usa "mulher"','São palavras idênticas nos dois textos'], correta:0,
+     explicacao:'<strong>עַלְמָה</strong> no TM = jovem mulher em idade fértil. A LXX traduz por <strong>παρθένος (parthenos = virgem)</strong> — escolha teológica que é central no debate judaico-cristão sobre Isaías 7:14 e Mateus 1:23.'},
+    {texto:'O פֶּסַח (Páscoa judaica) celebra:', heb:'פֶּסַח', hint:'Jesus a celebrou na última ceia',
+     opcoes:['A entrega da Torá no Sinai','A dedicação do Templo','A libertação do Egito','Os 40 anos no deserto'], correta:2,
+     explicacao:'O <strong>Pêssach (פֶּסַח)</strong> celebra a <strong>libertação do Egito</strong>. Inclui o Seder (ordem litúrgica), Matzá (pão sem fermento) e leitura da Hagadá. Jesus celebrou esta festa na última ceia (Lc 22:15).'},
+    {texto:'Nos verbos fracos "Pê-Nun" (פ"נ), o que acontece com o Nun?', heb:'נָפַל', hint:'Ex: נָפַל → יִפֹּל',
+     opcoes:['O Nun se duplica','O Nun se assimila à letra seguinte com Daghesh','O Nun vira silencioso','O Nun cai completamente em todas as formas'], correta:1,
+     explicacao:'Nos verbos Pê-Nun, o <strong>Nun assimila-se à consoante seguinte</strong>, representado por um Daghesh Forte. Ex: נָפַל (cair) → imperfeito יִפֹּל (não יִנְפֹּל). Resultado: a forma parece ter perdido o Nun.'},
+    {texto:'Qual é a fórmula de abertura de todas as bênçãos judaicas?', heb:'בָּרוּךְ אַתָּה יְהוָה', hint:'Aparece mais de 100 vezes na liturgia',
+     opcoes:['שְׁמַע יִשְׂרָאֵל','בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם','יְהִי שֵׁם יְהוָה מְבֹרָךְ','הַלְלוּיָהּ'], correta:1,
+     explicacao:'<strong>בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם</strong> = "Bendito és Tu, SENHOR nosso Deus, Rei do universo". É a fórmula padrão de todas as bênçãos judaicas — do Kidush ao HaMotzí.'},
+    {texto:'No Salmo 23:1, "יְהוָה רֹעִי" é uma frase nominal. O que isso significa?', heb:'יְהוָה רֹעִי', hint:'Observe que não há verbo explícito',
+     opcoes:['O verbo está no passado','Não existe verbo "ser" explícito no presente','É um erro do escriba','O sujeito está oculto'], correta:1,
+     explicacao:'Uma <strong>frase nominal</strong> em hebraico não tem verbo "ser" explícito no presente. יְהוָה רֹעִי = literalmente "YHWH meu-pastor" — o verbo "é" é subentendido. Tradutores adicionam "é" em português.'},
+  ],
+};
+
+let simNivelAtual = null;
+let simPerguntasAtuais = [];
+let simIdx = 0;
+let simAcertos = 0;
+let simErros = [];
+let simRespondida = false;
+
+function iniciarSimulado(nivel, btn) {
+  document.querySelectorAll('.sim-nivel-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  simNivelAtual = nivel;
+  simPerguntasAtuais = [...simPerguntas[nivel]].sort(()=>Math.random()-0.5);
+  simIdx = 0; simAcertos = 0; simErros = [];
+  const cores = {basico:'var(--teal)', intermediario:'var(--gold)', avancado:'var(--rose)'};
+  const nomes = {basico:'Simulado Básico 🟢', intermediario:'Simulado Intermediário 🟡', avancado:'Simulado Avançado 🔴'};
+  document.getElementById('simTitulo').textContent = nomes[nivel];
+  document.getElementById('simProgFill').style.background = cores[nivel];
+  document.getElementById('simArena').classList.add('active');
+  document.getElementById('simResultado').classList.remove('show');
+  renderSimPergunta();
+}
+
+function renderSimPergunta() {
+  const total = simPerguntasAtuais.length;
+  const p = simPerguntasAtuais[simIdx];
+  simRespondida = false;
+  const pct = ((simIdx) / total * 100);
+
+  document.getElementById('simProgFill').style.width = Math.max(5, pct) + '%';
+  document.getElementById('simProgNum').textContent = `${simIdx+1}/${total}`;
+  document.getElementById('simPergNum').textContent = `Pergunta ${simIdx+1} de ${total}`;
+  document.getElementById('simPontos').textContent = simAcertos;
+
+  const hebEl = document.getElementById('simPergHeb');
+  if(p.heb){ hebEl.textContent = p.heb; hebEl.style.display = 'block'; }
+  else { hebEl.style.display = 'none'; }
+
+  document.getElementById('simPergTexto').textContent = p.texto;
+  document.getElementById('simPergHint').textContent = '💡 ' + p.hint;
+  document.getElementById('simFeedback').className = 'sim-feedback';
+  document.getElementById('simFeedback').innerHTML = '';
+  document.getElementById('simProxBtn').style.display = 'none';
+
+  const letras = ['A','B','C','D'];
+  const cont = document.getElementById('simOpcoes');
+  cont.innerHTML = '';
+  const shuffled = p.opcoes.map((o,i)=>({texto:o, original:i})).sort(()=>Math.random()-0.5);
+
+  shuffled.forEach((op, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sim-opcao';
+    btn.innerHTML = `<span class="so-letra">${letras[i]}</span>${op.texto}`;
+    btn.onclick = () => responder(op.original === p.correta, btn, op.original, p.correta, shuffled, p);
+    cont.appendChild(btn);
+  });
+}
+
+function responder(acertou, btnClicado, escolhaOriginal, corretaOriginal, shuffled, p) {
+  if(simRespondida) return;
+  simRespondida = true;
+
+  const btns = document.querySelectorAll('.sim-opcao');
+  btns.forEach(b => b.disabled = true);
+
+  if(acertou) {
+    btnClicado.classList.add('correta');
+    simAcertos++;
+    document.getElementById('simPontos').textContent = simAcertos;
+    const fb = document.getElementById('simFeedback');
+    fb.className = 'sim-feedback certo show';
+    fb.innerHTML = `✅ Correto! ${p.explicacao}`;
+  } else {
+    btnClicado.classList.add('errada');
+    // Highlight correct answer
+    btns.forEach((b,i) => {
+      if(shuffled[i].original === corretaOriginal) b.classList.add('revelar');
+    });
+    const fb = document.getElementById('simFeedback');
+    fb.className = 'sim-feedback errou show';
+    fb.innerHTML = `❌ Não foi dessa vez. ${p.explicacao}`;
+    simErros.push({pergunta: p.texto, correta: p.opcoes[corretaOriginal], heb: p.heb});
+  }
+
+  document.getElementById('simProxBtn').style.display = 'block';
+}
+
+function simProxima() {
+  simIdx++;
+  if(simIdx >= simPerguntasAtuais.length) {
+    mostrarResultado();
+  } else {
+    renderSimPergunta();
+  }
+}
+
+function mostrarResultado() {
+  document.getElementById('simArena').classList.remove('active');
+  const res = document.getElementById('simResultado');
+  res.classList.add('show');
+
+  const total = simPerguntasAtuais.length;
+  const pct = Math.round(simAcertos / total * 100);
+  const erros = total - simAcertos;
+
+  // Estrelas
+  let estrelas = pct>=90?'⭐⭐⭐⭐⭐':pct>=70?'⭐⭐⭐⭐':pct>=50?'⭐⭐⭐':pct>=30?'⭐⭐':'⭐';
+  document.getElementById('simEstrelas').textContent = estrelas;
+
+  // Círculo
+  const circ = document.getElementById('simResCirculo');
+  circ.textContent = `${simAcertos}/${total}`;
+  circ.className = 'sim-res-circulo ' + (pct===100?'perfeito':pct>=80?'otimo':pct>=50?'bom':'estudar');
+
+  // Título e mensagem
+  const configs = [
+    {min:100, titulo:'🏆 Perfeito!', msg:`Parabéns! Você acertou todas as ${total} questões! Você demonstra domínio completo do nível ${simNivelAtual}. Continue avançando!`},
+    {min:80, titulo:'😊 Ótimo!', msg:`Excelente resultado! ${simAcertos} de ${total} acertos. Você está muito bem neste nível — revise as questões que errou e estará pronto para avançar.`},
+    {min:60, titulo:'📖 Bom progresso!', msg:`${simAcertos} de ${total} acertos. Você tem uma boa base, mas vale reforçar os pontos que errou. Revise os módulos indicados e tente novamente!`},
+    {min:40, titulo:'💪 Continue estudando!', msg:`${simAcertos} de ${total} acertos. Não desanime — o hebraico exige prática constante! Volte aos módulos deste nível e refaça o simulado.`},
+    {min:0, titulo:'🌱 Vamos estudar mais!', msg:`${simAcertos} de ${total} acertos. Este nível ainda precisa de atenção. Revise os módulos com calma e volte quando estiver mais preparado. Você consegue!`},
+  ];
+  const cfg = configs.find(c => pct >= c.min);
+  document.getElementById('simResTitulo').textContent = cfg.titulo;
+  document.getElementById('simResMsg').textContent = cfg.msg;
+  document.getElementById('simResAcertos').textContent = simAcertos;
+  document.getElementById('simResErros').textContent = erros;
+  document.getElementById('simResPct').textContent = pct + '%';
+
+  // Lista de erros
+  const errosList = document.getElementById('simResErrosLista');
+  if(simErros.length > 0) {
+    errosList.innerHTML = `<div class="sim-res-erros-title">Questões para revisar:</div>` +
+      simErros.map(e=>`<div class="sim-res-erro-item">${e.heb?`<strong>${e.heb}</strong> — `:''}${e.pergunta}<br><span style="color:var(--teal);">✓ Resposta correta: ${e.correta}</span></div>`).join('');
+  } else {
+    errosList.innerHTML = `<div style="text-align:center;color:var(--teal);font-size:15px;margin-bottom:20px;">🎉 Nenhum erro! Perfeito!</div>`;
+  }
+}
+
+function reiniciarSimulado() {
+  document.getElementById('simResultado').classList.remove('show');
+  iniciarSimulado(simNivelAtual, document.querySelector(`.sim-nivel-btn.${simNivelAtual}`));
+}
+
+function voltarNiveis() {
+  document.getElementById('simResultado').classList.remove('show');
+  document.getElementById('simArena').classList.remove('active');
+  document.querySelectorAll('.sim-nivel-btn').forEach(b=>b.classList.remove('active'));
+}
 
 /* ══ ORAÇÕES DATA ══ */
 const oracoesData = [
