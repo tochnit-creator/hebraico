@@ -116,14 +116,19 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 }
 .lock-prof strong{color:var(--gold);}
 
-@keyframes shake{
-  0%,100%{transform:translateX(0);}
-  20%{transform:translateX(-8px);}
-  40%{transform:translateX(8px);}
-  60%{transform:translateX(-6px);}
-  80%{transform:translateX(6px);}
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.lock-tabs{display:flex;gap:0;margin-bottom:28px;background:var(--surface);border-radius:10px;padding:4px;}
+.lock-tab{flex:1;padding:9px;border-radius:8px;border:none;background:transparent;color:var(--muted);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;}
+.lock-tab.active{background:var(--gold-dim);color:var(--gold);font-weight:600;}
+.lock-panel{display:none;}.lock-panel.active{display:block;}
+.lock-input-label{font-size:11px;color:var(--muted);text-align:left;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;}
+.lock-divider{display:flex;align-items:center;gap:10px;margin:16px 0;}
+.lock-divider::before,.lock-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.lock-divider span{font-size:11px;color:var(--muted);}
+.lock-forgot{font-size:12px;color:var(--gold);cursor:pointer;text-decoration:underline;margin-top:8px;display:block;text-align:right;}
+.lock-forgot:hover{color:var(--gold-light);}
+.lock-loading{display:none;flex-direction:column;align-items:center;gap:12px;padding:20px 0;}
+.lock-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
 ::-webkit-scrollbar-thumb{background:var(--faint);border-radius:3px;}
 
 /* NAV */
@@ -839,63 +844,173 @@ footer strong{color:var(--gold);}
 </head>
 <body>
 
-<!-- ══ TELA DE SENHA ══ -->
-<div id="lockScreen">
+<!-- ══ FIREBASE SDK ══ -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBfZKyocxJlS9WhLLRS_7-eJ45pCa1kmH8",
+  authDomain: "hebraico-biblico-3041d.firebaseapp.com",
+  projectId: "hebraico-biblico-3041d",
+  storageBucket: "hebraico-biblico-3041d.firebasestorage.app",
+  messagingSenderId: "1068638349950",
+  appId: "1:1068638349950:web:7de33f9988d8f50afd062f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Verificar se já está logado
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    // Usuário logado — esconde tela de login
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('userEmailDisplay').textContent = user.email;
+    document.getElementById('logoutBtn').style.display = 'flex';
+  } else {
+    // Não logado — mostra tela de login
+    document.getElementById('lockScreen').style.display = 'flex';
+    document.getElementById('logoutBtn').style.display = 'none';
+  }
+});
+
+// LOGIN
+window.fazerLogin = async function(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const senha = document.getElementById('loginSenha').value.trim();
+  const erro = document.getElementById('loginErro');
+  const btn = document.getElementById('loginBtn');
+
+  if(!email || !senha){ erro.textContent = '❌ Preencha e-mail e senha.'; return; }
+
+  btn.textContent = 'Entrando...'; btn.disabled = true; erro.textContent = '';
+  try {
+    await signInWithEmailAndPassword(auth, email, senha);
+  } catch(e) {
+    btn.textContent = 'Entrar no curso ✦'; btn.disabled = false;
+    if(e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential')
+      erro.textContent = '❌ E-mail ou senha incorretos.';
+    else if(e.code === 'auth/user-disabled')
+      erro.textContent = '❌ Sua conta foi desativada. Entre em contato com o Prof. Gabriel.';
+    else if(e.code === 'auth/too-many-requests')
+      erro.textContent = '❌ Muitas tentativas. Aguarde alguns minutos.';
+    else
+      erro.textContent = '❌ Erro ao entrar. Tente novamente.';
+  }
+}
+
+// CADASTRO
+window.fazerCadastro = async function(){
+  const email = document.getElementById('cadEmail').value.trim();
+  const senha = document.getElementById('cadSenha').value.trim();
+  const senha2 = document.getElementById('cadSenha2').value.trim();
+  const erro = document.getElementById('cadErro');
+  const btn = document.getElementById('cadBtn');
+
+  if(!email || !senha){ erro.textContent = '❌ Preencha todos os campos.'; return; }
+  if(senha !== senha2){ erro.textContent = '❌ As senhas não coincidem.'; return; }
+  if(senha.length < 6){ erro.textContent = '❌ A senha deve ter pelo menos 6 caracteres.'; return; }
+
+  btn.textContent = 'Criando conta...'; btn.disabled = true; erro.textContent = '';
+  try {
+    await createUserWithEmailAndPassword(auth, email, senha);
+    erro.style.color = 'var(--teal)';
+    erro.textContent = '✅ Conta criada! Aguarde aprovação do Prof. Gabriel para acessar.';
+    // Desloga imediatamente — Prof. Gabriel precisa aprovar
+    await signOut(auth);
+    btn.textContent = 'Criar conta'; btn.disabled = false;
+  } catch(e) {
+    btn.textContent = 'Criar conta'; btn.disabled = false;
+    if(e.code === 'auth/email-already-in-use')
+      erro.textContent = '❌ Este e-mail já está cadastrado. Faça login.';
+    else if(e.code === 'auth/invalid-email')
+      erro.textContent = '❌ E-mail inválido.';
+    else
+      erro.textContent = '❌ Erro ao criar conta. Tente novamente.';
+  }
+}
+
+// ESQUECI A SENHA
+window.esqueceuSenha = async function(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const erro = document.getElementById('loginErro');
+  if(!email){ erro.textContent = '❌ Digite seu e-mail primeiro.'; return; }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    erro.style.color = 'var(--teal)';
+    erro.textContent = '✅ E-mail de recuperação enviado!';
+  } catch(e) {
+    erro.textContent = '❌ E-mail não encontrado.';
+  }
+}
+
+// LOGOUT
+window.fazerLogout = async function(){
+  await signOut(auth);
+}
+
+// TROCAR ABAS
+window.trocarAba = function(aba){
+  document.querySelectorAll('.lock-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.lock-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+aba).classList.add('active');
+  document.getElementById('panel-'+aba).classList.add('active');
+  document.getElementById('loginErro').textContent='';
+  document.getElementById('cadErro').textContent='';
+}
+</script>
+
+<!-- ══ TELA DE LOGIN ══ -->
+<div id="lockScreen" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px;">
   <div class="lock-glow"></div>
   <div class="lock-box">
     <div class="lock-icon">🔐</div>
     <div class="lock-hebrew">עברית</div>
     <div class="lock-title">Hebraico Bíblico</div>
-    <div class="lock-sub">Curso exclusivo · Prof. Gabriel Barbosa<br>Digite a senha de acesso para continuar</div>
-    <input
-      class="lock-input"
-      type="password"
-      id="lockInput"
-      placeholder="••••••••"
-      maxlength="20"
-      onkeydown="if(event.key==='Enter')checkPassword()"
-      autocomplete="off"
-    >
-    <button class="lock-btn" onclick="checkPassword()">Acessar o curso ✦</button>
-    <div class="lock-error" id="lockError"></div>
+    <div class="lock-sub">Curso exclusivo · Prof. Gabriel Barbosa</div>
+
+    <!-- ABAS -->
+    <div class="lock-tabs">
+      <button class="lock-tab active" id="tab-login" onclick="trocarAba('login')">Entrar</button>
+      <button class="lock-tab" id="tab-cadastro" onclick="trocarAba('cadastro')">Criar conta</button>
+    </div>
+
+    <!-- PAINEL LOGIN -->
+    <div class="lock-panel active" id="panel-login">
+      <div class="lock-input-label">E-mail</div>
+      <input class="lock-input" type="email" id="loginEmail" placeholder="seu@email.com" style="letter-spacing:0;text-align:left;" onkeydown="if(event.key==='Enter')fazerLogin()">
+      <div class="lock-input-label" style="margin-top:12px;">Senha</div>
+      <input class="lock-input" type="password" id="loginSenha" placeholder="••••••••" onkeydown="if(event.key==='Enter')fazerLogin()">
+      <span class="lock-forgot" onclick="esqueceuSenha()">Esqueci minha senha</span>
+      <button class="lock-btn" id="loginBtn" onclick="fazerLogin()" style="margin-top:16px;">Entrar no curso ✦</button>
+      <div class="lock-error" id="loginErro"></div>
+    </div>
+
+    <!-- PAINEL CADASTRO -->
+    <div class="lock-panel" id="panel-cadastro">
+      <div class="lock-input-label">E-mail</div>
+      <input class="lock-input" type="email" id="cadEmail" placeholder="seu@email.com" style="letter-spacing:0;text-align:left;">
+      <div class="lock-input-label" style="margin-top:12px;">Senha</div>
+      <input class="lock-input" type="password" id="cadSenha" placeholder="Mínimo 6 caracteres">
+      <div class="lock-input-label" style="margin-top:12px;">Confirmar senha</div>
+      <input class="lock-input" type="password" id="cadSenha2" placeholder="Repita a senha" onkeydown="if(event.key==='Enter')fazerCadastro()">
+      <button class="lock-btn" id="cadBtn" onclick="fazerCadastro()" style="margin-top:16px;">Criar conta</button>
+      <div class="lock-error" id="cadErro" style="min-height:18px;margin-top:10px;font-size:12px;line-height:1.5;"></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6;">Após criar sua conta, aguarde a aprovação do Prof. Gabriel para ter acesso ao curso.</div>
+    </div>
+
     <div class="lock-prof">
       <strong>Prof. Gabriel Barbosa</strong>
     </div>
   </div>
 </div>
 
-<script>
-// ══ DEFINA A SENHA AQUI ══
-const SENHA_CURSO = 'hebraico2026';
-
-function checkPassword(){
-  const input = document.getElementById('lockInput');
-  const error = document.getElementById('lockError');
-  const val = input.value.trim();
-
-  if(val === SENHA_CURSO){
-    // Salva no localStorage para não pedir de novo
-    localStorage.setItem('hb_acesso', btoa(SENHA_CURSO));
-    const ls = document.getElementById('lockScreen');
-    ls.classList.add('hide');
-    setTimeout(()=>{ ls.style.display='none'; }, 500);
-  } else {
-    input.classList.add('error');
-    error.textContent = '❌ Senha incorreta. Verifique o e-mail de acesso.';
-    input.value = '';
-    setTimeout(()=>{ input.classList.remove('error'); }, 500);
-  }
-}
-
-// Verifica se já tem acesso salvo
-(function(){
-  const saved = localStorage.getItem('hb_acesso');
-  if(saved && atob(saved) === SENHA_CURSO){
-    const ls = document.getElementById('lockScreen');
-    ls.style.display = 'none';
-  }
-})();
-</script>
+<!-- BOTÃO LOGOUT (visível após login) -->
+<div id="logoutBtn" style="display:none;position:fixed;bottom:20px;right:20px;z-index:500;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:12px;color:var(--muted);cursor:pointer;align-items:center;gap:8px;" onclick="fazerLogout()">
+  <span id="userEmailDisplay" style="color:var(--gold);font-size:11px;"></span>
+  <span>Sair 🚪</span>
+</div>
 
 <nav>
   <div class="nav-logo">
